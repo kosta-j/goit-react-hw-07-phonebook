@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact, fetchContact } from '../../Redux/operations';
+import { getContacts, getFilter } from '../../Redux/selectors';
 import Notification from '../Notification/Notification';
 import ContactItem from './ContactItem';
 import s from './ContactList.module.css';
@@ -10,8 +11,8 @@ export default function ContactList() {
   const dispatch = useDispatch();
   useEffect(() => dispatch(fetchContact()), [dispatch]);
 
-  const filter = useSelector(state => state.contacts.filter);
-  const items = useSelector(state => state.contacts.items);
+  const filter = useSelector(getFilter);
+  const items = useSelector(getContacts);
 
   const normalizedFilter = filter.toLowerCase();
   const filteredContacts = items.filter(contact =>

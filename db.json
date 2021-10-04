@@ -1,11 +1,6 @@
 {
   "contacts": [
     {
-      "name": "Konstantin Zhukov",
-      "number": "+38011-111-111-11",
-      "id": 1
-    },
-    {
       "name": "Константин Жуков",
       "number": "12312312",
       "id": 2

@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { getFilter } from '../../Redux/selectors';
 import * as actions from '../../Redux/actions';
 import s from './Filter.module.css';
 
 export default function Filter() {
-  const value = useSelector(state => state.contacts.filter);
+  const value = useSelector(getFilter);
   const dispatch = useDispatch();
 
   return (

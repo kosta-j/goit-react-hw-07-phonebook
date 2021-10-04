@@ -1,8 +1,14 @@
 import { combineReducers, createReducer } from '@reduxjs/toolkit';
-import { addContact, deleteContact, changeFilter } from './actions';
+import {
+  addContactRequest,
+  addContactSuccess,
+  addContactError,
+  deleteContact,
+  changeFilter,
+} from './actions';
 
 const contactItemsReducer = createReducer([], {
-  [addContact]: addContactCallback,
+  [addContactSuccess]: addContactCallback,
   [deleteContact]: deleteContactCallback,
 });
 
@@ -10,9 +16,16 @@ const contactFilterReducer = createReducer('', {
   [changeFilter]: (_, { payload }) => payload,
 });
 
+const contactsLoadingReducer = createReducer(false, {
+  [addContactRequest]: () => true,
+  [addContactSuccess]: () => false,
+  [addContactError]: () => false,
+});
+
 const contactsReducer = combineReducers({
   items: contactItemsReducer,
   filter: contactFilterReducer,
+  loading: contactsLoadingReducer,
 });
 
 function addContactCallback(state, { payload }) {

@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import * as actions from '../../Redux/actions';
+import { addContact } from '../../Redux/operations';
 import s from './ContactForm.module.css';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
-  const onSubmit = contact => dispatch(actions.addContact(contact));
+  const onSubmit = contact => dispatch(addContact(contact));
 
   const handleChange = e => {
     const { name, value } = e.currentTarget;

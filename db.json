@@ -1,36 +1,14 @@
 {
   "contacts": [
     {
-      "contactToAdd": {
-        "name": "Konstantin Zhukov",
-        "number": "12312312"
-      },
-      "completed": false,
+      "name": "Konstantin Zhukov",
+      "number": "+38011-111-111-11",
       "id": 1
     },
     {
-      "name": "Konstantin Zhukov",
-      "number": "+38011-111-111-11",
-      "completed": false,
-      "id": 2
-    },
-    {
-      "name": "Konstantin Zhukov",
-      "number": "+38011-111-111-11",
-      "completed": false,
-      "id": 3
-    },
-    {
       "name": "Константин Жуков",
-      "number": "+38011-111-111-11",
-      "completed": false,
-      "id": 4
-    },
-    {
-      "name": "Konstantin Zhukov",
       "number": "12312312",
-      "completed": false,
-      "id": 5
+      "id": 2
     }
   ]
 }

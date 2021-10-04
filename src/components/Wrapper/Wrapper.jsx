@@ -7,6 +7,7 @@ import Section from '../Section/Section';
 import s from './Wrapper.module.css';
 
 export default function Wrapper() {
+  console.log('wrapper mounted');
   const contacts = useSelector(state => state.contacts.items);
 
   return (
@@ -15,14 +16,14 @@ export default function Wrapper() {
         <ContactForm />
       </Section>
       <Section title="Contacts">
-        {contacts.length < 1 ? (
+        {/* {contacts.length < 1 ? (
           <Notification text="Contact list is empty" />
         ) : (
-          <>
-            <Filter />
-            <ContactList />
-          </>
-        )}
+          <> */}
+        <Filter />
+        <ContactList />
+        {/* </> */}
+        {/* )} */}
       </Section>
     </div>
   );

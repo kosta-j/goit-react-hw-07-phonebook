@@ -1,9 +1,15 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { deleteContact, fetchContact } from '../../Redux/operations';
+import Notification from '../Notification/Notification';
 import ContactItem from './ContactItem';
-import * as actions from '../../Redux/actions';
 import s from './ContactList.module.css';
 
 export default function ContactList() {
+  console.log('contactlist mounted');
+  const dispatch = useDispatch();
+  useEffect(() => dispatch(fetchContact()), [dispatch]);
+
   const filter = useSelector(state => state.contacts.filter);
   const items = useSelector(state => state.contacts.items);
 
@@ -12,10 +18,11 @@ export default function ContactList() {
     contact.name.toLowerCase().includes(normalizedFilter),
   );
 
-  const dispatch = useDispatch();
-  const onDeleteBtnClick = contact => dispatch(actions.deleteContact(contact));
+  const onDeleteBtnClick = contact => dispatch(deleteContact(contact.id));
 
-  return (
+  return items.length < 1 ? (
+    <Notification text="Contact list is empty" />
+  ) : (
     <ul className={s.contactList}>
       {filteredContacts.map(contact => (
         <ContactItem

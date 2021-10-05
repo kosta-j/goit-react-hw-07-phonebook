@@ -1,13 +1,16 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact, fetchContact } from '../../Redux/operations';
-import { getContacts, getFilter } from '../../Redux/selectors';
+import {
+  getContacts,
+  getFilter,
+  getVisibleContacts,
+} from '../../Redux/selectors';
 import Notification from '../Notification/Notification';
 import ContactItem from './ContactItem';
 import s from './ContactList.module.css';
 
 export default function ContactList() {
-  console.log('contactlist mounted');
   const dispatch = useDispatch();
   useEffect(() => dispatch(fetchContact()), [dispatch]);
 

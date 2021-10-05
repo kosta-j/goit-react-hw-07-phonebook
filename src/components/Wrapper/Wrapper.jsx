@@ -7,7 +7,6 @@ import Section from '../Section/Section';
 import s from './Wrapper.module.css';
 
 export default function Wrapper() {
-  console.log('wrapper mounted');
   const contacts = useSelector(getContacts);
 
   return (

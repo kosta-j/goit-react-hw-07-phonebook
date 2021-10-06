@@ -1,15 +1,16 @@
 import axios from 'axios';
 import {
+  addContactError,
   addContactRequest,
   addContactSuccess,
-  addContactError,
+  deleteContactError,
   deleteContactRequest,
   deleteContactSuccess,
-  deleteContactError,
+  fetchContactError,
   fetchContactRequest,
   fetchContactSuccess,
-  fetchContactError,
 } from './actions';
+import store from './store';
 
 axios.defaults.baseURL = 'http://localhost:3001';
 
@@ -20,6 +21,13 @@ export const addContact =
       name,
       number,
     };
+
+    const contacts = store.getState().contacts.items;
+
+    //duplicated name check:
+    if (contacts?.filter(item => item.name === name).length > 0) {
+      return dispatch(addContactError(`${name} is already in contacts`));
+    }
 
     dispatch(addContactRequest());
 
